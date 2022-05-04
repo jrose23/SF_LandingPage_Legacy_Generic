@@ -17,6 +17,7 @@
     --color-card-fill: #f7f7f7;
     --color-alert-border: #c60606;
     --color-alert-fill: #ffe9e9;
+    --color-disclosure: #666666;
 
     --font-primary: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
@@ -65,6 +66,7 @@ ol[role='list'] {
 }
 
 /* Set core root defaults */
+html,
 html:focus-within {
     scroll-behavior: smooth;
 }
@@ -118,7 +120,7 @@ select {
 /* UTILITIES */
 /* ------------------------------ */
 .container {
-    width: min(100% - 2rem, var(--container-width));
+    width: min(100% - 3rem, var(--container-width));
     margin-inline: auto;
 }
 
@@ -129,9 +131,6 @@ select {
 .container-fluid.nav {
     background-color: var(--color-white);
     box-shadow: var(--shadow-card);
-    /* position: fixed;
-    top: 0;
-    z-index: 10; */
 }
 
 .nav-container {
@@ -151,11 +150,18 @@ select {
     transform: translateY(-3.75rem);
 }
 
-hr.section-divider {
+.divider {
     border: 0;
     height: 1px;
     background-color: var(--color-card-border);
+}
+
+.divider-lg {
     margin: 3.75rem 0;
+}
+
+.divider-sm {
+    margin: 1.5rem 0;
 }
 
 /* ------------------------------ */
@@ -163,15 +169,28 @@ hr.section-divider {
 /* ------------------------------ */
 .btn {
     width: 100%;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: var(--fw-500);
     padding: 0.625rem;
     transition: all 0.15s ease-in-out;
     font-family: var(--font-primary);
+}
+
+.btn-lg {
+    font-size: 1.125rem;
+    font-weight: var(--fw-400);
+    padding: 1rem;
+}
+
+.btn-block {
+    display: block;
+    width: max-content;
 }
 
 .btn:hover {
@@ -287,12 +306,12 @@ hr.section-divider {
 /* HEADER */
 /* ------------------------------ */
 .header {
-    background-color: var(--color-black);
-    background: url(./images/Header_BG.jpg) no-repeat center center;
+    background: url(./images/header_bg.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-color: var(--color-black);
     padding: 14rem 0;
     border-bottom: 0.5rem solid var(--color-primary);
 }
@@ -313,6 +332,7 @@ hr.section-divider {
 .header-content-title.title-script {
     font-family: var(--font-script);
     font-weight: var(--fw-400);
+    text-transform: capitalize;
 }
 
 .header-content-title.title-serif {
@@ -345,7 +365,7 @@ hr.section-divider {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-white);
     border: 1px solid var(--color-card-border);
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
 }
 
@@ -362,7 +382,7 @@ hr.section-divider {
     grid-column: 2/13;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 805px) {
     .event-card-content {
         display: flex;
         align-items: center;
@@ -435,9 +455,9 @@ hr.section-divider {
     margin-bottom: 1rem;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 805px) {
     .venue {
-        margin-right: 0.5rem;
+        margin-right: 0.625rem;
     }
     .venue-name {
         font-size: 1.25rem;
@@ -455,7 +475,7 @@ hr.section-divider {
     gap: 0.5rem;
 }
 
-@media (min-width: 840px) {
+@media (min-width: 960px) {
     .button-grid {
         width: 75%;
     }
@@ -499,10 +519,10 @@ hr.section-divider {
 }
 
 /* ------------------------------ */
-/* MAIN CONTENT */
+/* MAIN / INTRO CONTENT */
 /* ------------------------------ */
 .main-content {
-    margin-top: 6.5rem;
+    margin-top: 3.75rem;
 }
 
 .intro-content {
@@ -512,7 +532,7 @@ hr.section-divider {
 .intro-content h3 {
     font-family: var(--font-serif);
     font-weight: var(--fw-500);
-    font-size: clamp(1rem, 5vw + 1rem, 3.25rem);
+    font-size: clamp(1rem, 5vw + 1rem, 3rem);
     line-height: 1.125;
     text-transform: uppercase;
     color: var(--color-primary);
@@ -531,6 +551,128 @@ hr.section-divider {
     }
 }
 
+/* ------------------------------ */
+/* BULLETS */
+/* ------------------------------ */
+.bullet-bg {
+    background-color: var(--color-white);
+}
+
 .bullet-content {
-    background-color: lightblue;
+    padding-bottom: 7.5rem;
+}
+
+@media (min-width: 840px) {
+    .bullet-bg {
+        background: url(./images/bullets_bg.jpg) no-repeat;
+        background-position: right bottom;
+        background-size: 45%;
+    }
+
+    .bullet-content {
+        width: 60%;
+    }
+}
+
+.bullet-content h4 {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-500);
+    font-size: clamp(1rem, 5vw + 1rem, 1.75rem);
+    line-height: 1.125;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.bullet-content > .btn {
+    margin-top: 2rem;
+}
+
+.bulle-list {
+    list-style: none;
+}
+
+.bullet-list-item,
+.bullet-disclosure {
+    margin-bottom: 1rem;
+}
+
+.bullet-list-item {
+    display: flex;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+.bullet-list-item i {
+    margin-right: 0.5rem;
+    color: var(--color-primary);
+}
+
+.bullet-disclosure {
+    font-size: 0.875rem;
+    color: var(--color-disclosure);
+}
+
+/* ------------------------------ */
+/* FOOTER */
+/* ------------------------------ */
+.footer-container {
+    background-color: var(--color-black);
+    border-top: 0.5rem solid var(--color-primary);
+    padding: 3.75rem 0;
+}
+
+.footer-body {
+    background-color: var(--color-white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+.footer-body-title.serif {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-500);
+    font-size: clamp(2.625rem, 7vw + 1rem, 3.5rem);
+    line-height: 1.125;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.footer-body-title.script {
+    font-family: var(--font-script);
+    font-weight: var(--fw-400);
+    font-size: clamp(2.625rem, 7vw + 1rem, 3.5rem);
+    text-transform: capitalize;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.footer-body-message {
+    font-size: 1.3125rem;
+}
+
+.footer-button-grid {
+    margin-top: var(--event-card-spacing);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+@media (min-width: 597px) {
+    .footer-button-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer-disclosure {
+    font-size: 0.75rem;
+    color: var(--color-disclosure);
+}
+
+.footer-disclosure a {
+    font-size: 0.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #999;
 }
